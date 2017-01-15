@@ -5,7 +5,7 @@ sudo apt-add-repository -y ppa:ondrej/php
 sudo apt-get -y update
 sudo apt-get -y dist-upgrade
 
-sudo DEBIAN_FRONTEND=noninteractive apt-get -y install apache2-bin
+sudo DEBIAN_FRONTEND=noninteractive apt-get -y install apache2
 sudo a2dismod mpm_event
 sudo a2enmod mpm_worker
 sudo service apache2 restart
