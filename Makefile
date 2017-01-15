@@ -1,3 +1,5 @@
 #
+PROFILE?=	104awssys12
+#
 build:
-	AWS_PROFILE=104awssys12 packer build packer.json
+	AWS_PROFILE=${PROFILE} packer build packer.json
