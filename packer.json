@@ -1,0 +1,47 @@
+{
+    "builders": [
+        {
+            "type": "amazon-ebs",
+            "name": "php70-ami-ap-northeast-1",
+            "ami_description": "PHP 7.0 (ap-northeast-1)",
+            "region": "ap-northeast-1",
+            "source_ami": "ami-eb49358c",
+            "instance_type": "t2.medium",
+            "ssh_username": "ubuntu",
+            "ami_name": "php70-ami-{{timestamp}}",
+            "tags": {
+                "Name": "php70-ami-{{timestamp}}"
+            },
+            "ami_block_device_mappings": [
+                {
+                    "device_name": "/dev/sda1",
+                    "volume_size": 8,
+                    "volume_type": "gp2",
+                    "delete_on_termination": true
+                }
+            ],
+            "launch_block_device_mappings": [
+                {
+                    "device_name": "/dev/sda1",
+                    "volume_size": 8,
+                    "volume_type": "gp2",
+                    "delete_on_termination": true
+                }
+            ],
+            "vpc_id": "vpc-838d2de7",
+            "subnet_id": "subnet-1c7a166a",
+            "associate_public_ip_address": true,
+            "security_group_ids": [
+                "sg-744dc713"
+            ],
+            "communicator": "ssh",
+            "ssh_pty": true
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "script": "./provision.sh"
+        }
+    ]
+}
